@@ -1,0 +1,139 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+<body>
+    <div style="text-align:center">
+        <h1>
+          {{title}}
+        </h1>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
+        </div>
+      <div class="green">{{message}}</div>
+      <div class="wrapper">
+        <h2>Account Information</h2>
+          <form (submit)="onSubmit()" name="myForm" ng-controller="validateCtrl" novalidate>
+            *First Name:
+              <input 
+                type="text" 
+                name="first_name" 
+                required 
+                minlength="4" 
+                maxlength="24"
+                [(ngModel)]="user.first_name"
+                #first_name='ngModel'
+              />
+              <span style="color:red" *ngIf="!first_name.valid">First Name should be 4-24 characters long.</span>
+              <br><br>
+              *Last Name:
+              <input 
+                type="text" 
+                name="last_name" 
+                required 
+                minlength="4" 
+                maxlength="24"
+                [(ngModel)]="user.last_name"
+                #last_name='ngModel'
+              /><span style="color:red" *ngIf="!last_name.valid">Last Name should be 4-24 characters long.</span>
+              <br><br>
+              *Email:
+              <input 
+                type="text" 
+                name="email" 
+                required 
+                minlength="4" 
+                maxlength="24"
+                pattern="^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$"
+                [(ngModel)]="user.email"
+                #email='ngModel'
+              /><span style="color:red" *ngIf="!email.valid">Enter Valid Email address.</span>
+              <br><br>
+              *Password:
+              <input 
+                type="password" 
+                name="password" 
+                required 
+                minlength="8" 
+                maxlength="15"
+                pattern="^([a-zA-Z0-9@*#]{8,15})$"
+                [(ngModel)]="user.password"
+                #password='ngModel'
+              /><span style="color:red" *ngIf="!password.valid">Password should be 8-15 characters long.</span>
+              <br><br>
+              *Password Confirmation:
+              <input 
+              type="password" 
+              name="conf_password" 
+              required 
+              minlength="8" 
+              maxlength="15"
+              pattern="^([a-zA-Z0-9@*#]{8,15})$"
+              [(ngModel)]="user.conf_password"
+              #conf_password='ngModel'
+            /><span style="color:red" *ngIf="user.password != user.conf_password">Passwords didn't match.</span>
+            <br><br>
+            *Street Address
+              <input 
+                type="text" 
+                name="street_address" 
+                required 
+                minlength="4" 
+                maxlength="24"
+                [(ngModel)]="user.street_address"
+                #street_address='ngModel'
+              /><span style="color:red" *ngIf="!street_address.valid">Street Address should be 4-24 characters long.</span>
+              <br><br>
+            *Unit/Apt #
+              <input 
+                type="text" 
+                name="unit_apt" 
+                required
+                [(ngModel)]="user.unit_apt"
+                #unit_apt='ngModel'
+              /><span style="color:red" *ngIf="!unit_apt.valid">Unit/apt is required.</span>
+              <br><br>
+            *City
+              <input 
+                type="text" 
+                name="city" 
+                required 
+                minlength="4" 
+                maxlength="24"
+                [(ngModel)]="user.city"
+                #city='ngModel'
+              /><span style="color:red" *ngIf="!city.valid">City is required.</span>
+              <br><br>
+            *State
+            <select name="state" [(ngModel)]="user.state" #state='ngModel'>
+                <option value="California">California</option>
+                <option value="New York">New York</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Florida">Florida</option>
+                <option value="Texas">Texas</option>
+            </select><br><br>
+            *I'm Feeling Lucky
+              <input
+                type="radio"
+                name="lucky"
+                value="yes"
+                required
+                [(ngModel)]="user.lucky"
+                #lucky = 'ngModel'
+              >Yes
+              <input
+                type="radio"
+                name="lucky"
+                value="no"
+                required
+                [(ngModel)]="user.lucky"
+                #lucky = 'ngModel'
+              >No
+              <span style="color:red" *ngIf="!lucky.valid">Choosing how you feel is required.</span>
+              <br><br>
+              <input *ngIf="first_name.valid && last_name.valid && email.valid && conf_password.valid && password.valid && street_address.valid && unit_apt.valid && city.valid" type="submit">
+
+            </form>
+            
+      </div>
+</body>
+</html>

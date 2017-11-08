@@ -1,0 +1,15 @@
+.wrapper{
+    text-align: left;
+    width: 800px;
+    margin-left: 300px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.btn{
+    display: none;
+}
+
+.green{
+    background-color: green;
+}
